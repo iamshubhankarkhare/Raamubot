@@ -1,5 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api');
 const greet = require("./modules/greet");
+const G = require('gizoogle');
 const token = '944880131:AAGtLEWa_IIRU4c6C8F13sSdfcOMY6xn4Io';
 const bot = new TelegramBot(token, {polling: true});
 
@@ -10,6 +11,13 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
   
     bot.sendMessage(chatId, resp);
   });
+  bot.onText(/\/gangsta (.+)/, (msg, match) => {
+    const resp = match[1]; 
+    G.string(resp, function(error, translation) {
+      bot.sendMessage(msg.chat.id, translation);
+    });
+  
+  });
 
 
   bot.on('message', (msg) => {
@@ -17,7 +25,7 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
     greet(bot, msg);
     var bye = "bye";
     if (msg.text.toString().toLowerCase().includes(bye)) {
-     bot.sendMessage(msg.chat.id, "One man down!, Bye");
+     bot.sendMessage(msg.chat.id, "One man down! Bye");
      } 
      if (msg.text.toString().toLowerCase().includes("mess")) {
 
@@ -26,7 +34,8 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
                 "keyboard": [["Gate 1", "Gate 3"],   ["Shipra"], ["Mc Donalds"],["Zomato"]]
                 }
             });        
-    } 
+    }
+   
 
 
   });
