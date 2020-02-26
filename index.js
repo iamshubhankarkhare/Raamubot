@@ -24,9 +24,12 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
     const chatId = msg.chat.id;
     greet(bot, msg);
     var bye = "bye";
+    //on bye 
     if (msg.text.toString().toLowerCase().includes(bye)) {
      bot.sendMessage(msg.chat.id, "One man down! Bye");
      } 
+
+     //on mess
      if (msg.text.toString().toLowerCase().includes("mess")) {
 
      bot.sendMessage(msg.chat.id, "I hear mess! Sure you wanna go to mess ?", {
@@ -35,6 +38,14 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
                 }
             });        
     }
+    //on massbunk
+
+    if (msg.text.toString().toLowerCase().includes("bunk")) {
+      // bot.sendMessage(msg.chat.id, "I hear mass bunk! Let's see what others have to say.");
+      bot.sendPoll(msg.chat.id,"Mass bunk?",[["You son of a bitch, I'm in"], ["Sorry"]]);
+      if(err)
+      console.log(err);
+      }
    
 
 
