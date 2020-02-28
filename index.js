@@ -1,6 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 const greet = require("./modules/greet");
 const G = require('gizoogle');
+const cron = require("node-cron");
 const token = '944880131:AAGtLEWa_IIRU4c6C8F13sSdfcOMY6xn4Io';
 const bot = new TelegramBot(token, {polling: true});
 
@@ -34,20 +35,27 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
 
      bot.sendMessage(msg.chat.id, "I hear mess! Sure you wanna go to mess ?", {
             "reply_markup": {
-                "keyboard": [["Gate 1", "Gate 3"],   ["Shipra"], ["Mc Donalds"],["Zomato"]]
+                "keyboard": [["Gate 1", "Gate 3"],   ["Shipra"], ["Mc Donalds"],["Zomato"],["Mess"]]
                 }
             });        
     }
-    //on massbunk
+    //on reply
 
-    if (msg.text.toString().toLowerCase().includes("bunk")) {
-      // bot.sendMessage(msg.chat.id, "I hear mass bunk! Let's see what others have to say.");
-      bot.sendPoll(msg.chat.id,"Mass bunk?",[["You son of a bitch, I'm in"], ["Sorry"]]);
-      if(err)
-      console.log(err);
+    const rep="I hear mess! Sure you wanna go to mess ?"
+    if (msg.text.toString().toLowerCase().includes("bc")) {
+         bot.sendPhoto(msg.chat.id, "/home/shubhankar/Desktop/Raamubot/static/abeysale.jpeg"); 
       }
-   
 
+
+
+      if (msg.text.toString().toLowerCase().includes("bunk")){
+      bot.sendPoll(msg.chat.id, "I hear mass bunk! Let's see what others have to say.", ["You son of a bitch , I'm in!","short atttendance"]);}
 
   });
+
+  bot.on('new_chat_members', (msg) => {
+  cron.schedule("30 21 * * 1-7 ", ()=>
+  {bot.sendMessage(msg.chat.id, msg.chat.id);})
+  });
+
   bot.on("polling_error", err => console.log(err));
