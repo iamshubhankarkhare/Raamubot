@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.19.2",
     "gizoogle": "0.0.6",
     "node-cron": "^2.0.3",
     "node-telegram-bot-api": "^0.40.0",
