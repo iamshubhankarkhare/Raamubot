@@ -2,6 +2,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const mongoose = require("mongoose");
 const greet = require("./modules/greet");
 const covid = require("./modules/covid");
+const myclass = require("./modules/myclass");
 const movie = require("./modules/movie");
 const G = require('gizoogle');
 const cron = require("node-cron");
@@ -25,15 +26,16 @@ bot.onText(/\/gangsta (.+)/, (msg, match) => {
   });
 
 });
-var chatId="";
+var chatId = "";
 bot.on('message', (msg) => {
   chatId += msg.chat.id;
   greet(bot, msg);
   if (msg.text) {
     covid(bot, msg);
     movie(bot, msg);
+    myclass(bot, msg);
   }
-  
+
 
 
 
@@ -54,7 +56,7 @@ bot.on('message', (msg) => {
 
   const rep = "I hear mess! Sure you wanna go to mess ?"
   if (msg.text.toString().toLowerCase().includes("bc")) {
-    bot.sendPhoto(msg.chat.id, "/home/shubhankar/Desktop/Raamubot/static/abeysale.jpeg");
+    bot.sendPhoto(msg.chat.id, "./static/abeysale.jpeg");
   }
 
 
@@ -64,9 +66,11 @@ bot.on('message', (msg) => {
   }
 
 });
-cron.schedule("1 0/12 * * * ", async () => { bot.sendMessage(chatId, "/covid");
-  var msg={text:'/covid', chat:{id:chatId}};
+//cron job for covid function
+cron.schedule("1 0/12 * * * ", async () => {
+  bot.sendMessage(chatId, "/covid");
+  var msg = { text: '/covid', chat: { id: chatId } };
   await covid(bot, msg);
- });
+});
 
 bot.on("polling_error", err => console.log(err));
