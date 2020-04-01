@@ -1,6 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 const greet = require("./modules/greet");
 const covid = require("./modules/covid");
+const movie = require("./modules/movie");
 const G = require('gizoogle');
 const cron = require("node-cron");
 const token = '944880131:AAGtLEWa_IIRU4c6C8F13sSdfcOMY6xn4Io';
@@ -41,6 +42,7 @@ bot.on('message', (msg) => {
   greet(bot, msg);
   if (msg.text) {
     covid(bot, msg);
+    movie(bot, msg);
   }
 
 
@@ -74,8 +76,6 @@ bot.on('message', (msg) => {
 
 });
 
-bot.on('new_chat_members', (msg) => {
-  cron.schedule("30 21 * * 1-7 ", () => { bot.sendMessage(msg.chat.id, msg.chat.id); })
-});
+cron.schedule("35 1 * * * ", async () => { bot.sendMessage(msg.chat.id, "gjhghjghj"); });
 
 bot.on("polling_error", err => console.log(err));
