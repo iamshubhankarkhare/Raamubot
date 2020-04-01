@@ -1,4 +1,5 @@
 const TelegramBot = require('node-telegram-bot-api');
+const mongoose = require("mongoose");
 const greet = require("./modules/greet");
 const covid = require("./modules/covid");
 const movie = require("./modules/movie");
@@ -8,8 +9,9 @@ const token = '944880131:AAGtLEWa_IIRU4c6C8F13sSdfcOMY6xn4Io';
 const bot = new TelegramBot(token, { polling: true });
 
 
+
 bot.onText(/\/echo (.+)/, (msg, match) => {
-  const chatId = msg.chat.id;
+  chatId = msg.chat.id;
   const resp = match[1];
 
   bot.sendMessage(chatId, resp);
@@ -23,27 +25,15 @@ bot.onText(/\/gangsta (.+)/, (msg, match) => {
   });
 
 });
-
-// //covid
-// let url="https://api.covid19india.org/data.json";
-
-// bot.onText(/\/covid (.+)/, async (msg, match) => {
-//   const resp = match[1]; 
-//   let args = msg.text.split(" ");
-//   let out=" "+args[1]+"hjsh"+args[2]+"hjsh"+args[3]+"hjsh";
-//   await bot.sendMessage(msg.chat.id, out);
-
-
-// });
-
-
+var chatId="";
 bot.on('message', (msg) => {
-  const chatId = msg.chat.id;
+  chatId += msg.chat.id;
   greet(bot, msg);
   if (msg.text) {
     covid(bot, msg);
     movie(bot, msg);
   }
+  
 
 
 
@@ -61,7 +51,6 @@ bot.on('message', (msg) => {
       }
     });
   }
-  //on reply
 
   const rep = "I hear mess! Sure you wanna go to mess ?"
   if (msg.text.toString().toLowerCase().includes("bc")) {
@@ -75,7 +64,9 @@ bot.on('message', (msg) => {
   }
 
 });
-
-cron.schedule("35 1 * * * ", async () => { bot.sendMessage(msg.chat.id, "gjhghjghj"); });
+cron.schedule("1 0/12 * * * ", async () => { bot.sendMessage(chatId, "/covid");
+  var msg={text:'/covid', chat:{id:chatId}};
+  await covid(bot, msg);
+ });
 
 bot.on("polling_error", err => console.log(err));
