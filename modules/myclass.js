@@ -15,10 +15,10 @@ const myclass = async (bot, msg) => {
         var out = ""
         for (let i = 0; i < resp.classes.length; i++) {
             if (resp.classes[i].read === false) {
-                var temp2=new Date(resp.classes[i].date);
-                console.log(typeof(temp2));
-                console.log("temp2= "+temp2);
-                out += "Sub: " + resp.classes[i].sub + "\nDate: " +temp2+ "\n\n";
+                var temp2 = new Date(resp.classes[i].date);
+                console.log(typeof (temp2));
+                console.log("temp2= " + temp2);
+                out += "Sub: " + resp.classes[i].sub + "\nDate: " + temp2 + "\n\n";
             }
         }
         if (out.length == 0)
@@ -48,33 +48,52 @@ const myclass = async (bot, msg) => {
         //     console.log("edate = 0"+edate);
         //     console.log("\n\n"+fdate.getTime()-edate.getTime());
 
-        var date_user=new Date(`${args[2]} ${args[3]}`);
-        var temp=JSON.stringify(date_user);
-        
-        var inp=`{"sub":"${args[1]}","date":${temp},"read":false}`;
+        var date_user = new Date(`${args[2]} ${args[3]}`);
+        var temp = JSON.stringify(date_user);
+
+        var inp = `{"sub":"${args[1]}","date":${temp},"read":false}`;
         resp["classes"].push(JSON.parse(inp));
         console.log(resp);
         fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
-                if (err) throw err;
-                console.log('Updated! from addclass');
-            });
+            if (err) throw err;
+            console.log('Updated! from addclass');
+        });
     }
     if (args[0] == "/delclass") {
-            var removeIndex = resp.classes.map(function (item) { return item.read; }).indexOf(false);
-            console.log(removeIndex);
-            if (removeIndex != -1) {
-                 resp.classes.splice(removeIndex, 1);
-            }
+        var removeIndex = resp.classes.map(function (item) { return item.read; }).indexOf(false);
+        console.log(removeIndex);
+        if (removeIndex != -1) {
+            resp.classes.splice(removeIndex, 1);
+        }
 
-            console.log(resp);
-            fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
-                if (err) throw err;
-                console.log('Updated! from delclass');
-            });
-        
+        console.log(resp);
+        fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
+            if (err) throw err;
+            console.log('Updated! from delclass');
+        });
+    }
 
-        console.log(resp.classes.length);
+    //updateclass
+    if (args[0] == "/updateclass") {
+        var updateIndex = resp.classes.map(function (item) { return item.read; }).indexOf(false);
+        console.log(updateIndex + "type " + typeof (updateIndex));
 
+        if (updateIndex != -1) {
+            var ndate =new Date();
+            console.log("ndate= " + ndate + " " + typeof (ndate));
+            var gh=JSON.parse(JSON.stringify(resp.classes[updateIndex].date));
+            console.log(gh+"  gh");
+            var cdate = new Date(gh);
+           
+            console.log("cdate-ndate " +(cdate.getTime()-ndate.getTime()));
+
+        }
+
+        console.log(resp);
+        // fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
+        //     if (err) throw err;
+        //     console.log('Updated!');
+        //});
     }
 }
 module.exports = myclass;

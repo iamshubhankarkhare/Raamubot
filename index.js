@@ -84,7 +84,7 @@ bot.on('message', (msg) => {
 
 
 //cron job for covid function
-cron.schedule("* * * * *  ", async () => {
+cron.schedule("1 10 * * */1", async () => {
   bot.sendMessage(chatId, "/covid");
   console.log(chatId);
   var msg = { text: '/covid', chat: { id: chatId } };
@@ -92,47 +92,18 @@ cron.schedule("* * * * *  ", async () => {
   await covid(bot, msg);
 });
 //cron job for delclasss function
-cron.schedule("* * * * * ", async () => {
+cron.schedule("55 */1 * * 0-6 ", async () => {
   bot.sendMessage(chatId, "/delclass");
   console.log(chatId);
   var msg = { text: '/delclass', chat: { id: chatId } };
   await myclass(bot, msg);
 });
 
-//cron job for delete of json objects
-// cron.schedule("* * * * *", async () => {
-//   var removeIndex = resp.classes.map(function (item) { return item.read; }).indexOf(true);
-//   console.log(removeIndex);
-//   if (removeIndex != -1) {
-//       await resp.classes.splice(removeIndex, 1);
-//   }
-
-//   console.log(resp);
-//   fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
-//       if (err) throw err;
-//       console.log('Updated! fromm cron delete');
-//   });
-// });
 
 
 //cron job for updation of classes when done
 // cron.schedule("* * * * *", async () => {
-//   var updateIndex = resp.classes.map(function (item) { return item.read; }).indexOf(false);
-//   console.log(updateIndex+"type "+ typeof(updateIndex));
-  
-//   if (updateIndex != -1) {
-//       var ndate = Date.now();
-//       var cdate = new Date(JSON.parse(resp.classes.date));
-//       console.log("ndate= " + ndate + " " + typeof (ndate));
-//       console.log("cdate= " + cdate + " " + typeof (cdate));
-    
-//   }
-
-//   console.log(resp);
-//   fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
-//       if (err) throw err;
-//       console.log('Updated!');
-//   });
+//   
 //  });
 
 
