@@ -3,10 +3,7 @@ const covid = async (bot, msg) => {
     let args = msg.text.split(" ");
     const chatId = msg.chat.id;
     if (args[0] == "/covid") {
-        bot.sendMessage(chatId, "covid running");
         let res = await axios.get("https://api.covid19india.org/data.json");
-        console.log(res);
-        console.log("type="+typeof(res));
         let { cases_time_series } = res.data;
         let {
             dailyconfirmed,
