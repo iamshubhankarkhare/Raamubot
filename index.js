@@ -1,5 +1,7 @@
 const TelegramBot = require('node-telegram-bot-api');
 const mongoose = require("mongoose");
+const fs = require('fs');
+const path = require("path");
 const greet = require("./modules/greet");
 const covid = require("./modules/covid");
 const myclass = require("./modules/myclass");
@@ -9,19 +11,22 @@ const cron = require("node-cron");
 const token = '944880131:AAGtLEWa_IIRU4c6C8F13sSdfcOMY6xn4Io';
 const bot = new TelegramBot(token, { polling: true });
 
+const read = fs.readFileSync(path.resolve("myclass.json"));
+const resp = JSON.parse(read);
+
 
 
 bot.onText(/\/echo (.+)/, (msg, match) => {
   chatId = msg.chat.id;
-  const resp = match[1];
+  const res = match[1];
 
-  bot.sendMessage(chatId, resp);
+  bot.sendMessage(chatId, res);
 });
 
 //gangsta
 bot.onText(/\/gangsta (.+)/, (msg, match) => {
-  const resp = match[1];
-  G.string(resp, function (error, translation) {
+  const res = match[1];
+  G.string(res, function (error, translation) {
     bot.sendMessage(msg.chat.id, translation);
   });
 
@@ -66,11 +71,69 @@ bot.on('message', (msg) => {
   }
 
 });
+
+
+//myclass functions start here
+
+
+
+
+
+
+
+
+
 //cron job for covid function
-cron.schedule("1 0/12 * * * ", async () => {
+cron.schedule("* * * * *  ", async () => {
   bot.sendMessage(chatId, "/covid");
+  console.log(chatId);
   var msg = { text: '/covid', chat: { id: chatId } };
+  console.log(msg.chat.id);
   await covid(bot, msg);
 });
+//cron job for delclasss function
+cron.schedule("* * * * * ", async () => {
+  bot.sendMessage(chatId, "/delclass");
+  console.log(chatId);
+  var msg = { text: '/delclass', chat: { id: chatId } };
+  await myclass(bot, msg);
+});
+
+//cron job for delete of json objects
+// cron.schedule("* * * * *", async () => {
+//   var removeIndex = resp.classes.map(function (item) { return item.read; }).indexOf(true);
+//   console.log(removeIndex);
+//   if (removeIndex != -1) {
+//       await resp.classes.splice(removeIndex, 1);
+//   }
+
+//   console.log(resp);
+//   fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
+//       if (err) throw err;
+//       console.log('Updated! fromm cron delete');
+//   });
+// });
+
+
+//cron job for updation of classes when done
+// cron.schedule("* * * * *", async () => {
+//   var updateIndex = resp.classes.map(function (item) { return item.read; }).indexOf(false);
+//   console.log(updateIndex+"type "+ typeof(updateIndex));
+  
+//   if (updateIndex != -1) {
+//       var ndate = Date.now();
+//       var cdate = new Date(JSON.parse(resp.classes.date));
+//       console.log("ndate= " + ndate + " " + typeof (ndate));
+//       console.log("cdate= " + cdate + " " + typeof (cdate));
+    
+//   }
+
+//   console.log(resp);
+//   fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
+//       if (err) throw err;
+//       console.log('Updated!');
+//   });
+//  });
+
 
 bot.on("polling_error", err => console.log(err));

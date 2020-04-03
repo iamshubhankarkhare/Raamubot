@@ -1,7 +1,6 @@
 //const resp=require("../static/myclass.json");
 const fs = require('fs');
 const path = require("path");
-const cron = require("node-cron");
 const p = path.resolve("myclass.json");
 const res = fs.readFileSync(p);
 const resp = JSON.parse(res);
@@ -15,7 +14,7 @@ const myclass = async (bot, msg) => {
         bot.sendMessage(chatId, "myclass running");
         var out = ""
         for (let i = 0; i < resp.classes.length; i++) {
-            if (resp.classes[i].read === true) {
+            if (resp.classes[i].read === false) {
                 var temp2=new Date(resp.classes[i].date);
                 console.log(typeof(temp2));
                 console.log("temp2= "+temp2);
@@ -50,60 +49,31 @@ const myclass = async (bot, msg) => {
         //     console.log("\n\n"+fdate.getTime()-edate.getTime());
 
         var date_user=new Date(`${args[2]} ${args[3]}`);
-        console.log(" \n\ndate_user= "+date_user+" "+typeof(date_user));
         var temp=JSON.stringify(date_user);
-        console.log("temp= "+temp+" "+typeof(temp));
         
-        var inp=`{"sub":"${args[1]}","date":${temp},"read":true}`;
+        var inp=`{"sub":"${args[1]}","date":${temp},"read":false}`;
         resp["classes"].push(JSON.parse(inp));
         console.log(resp);
         fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
                 if (err) throw err;
-                console.log('Updated!');
+                console.log('Updated! from addclass');
             });
-
-
-
-
-
-
-
-
-
-        // console.log(p);
-        // resp["classes"].push(JSON.parse(inp));
-        // console.log(resp);
-        // fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
-        //     if (err) throw err;
-        //     console.log('Updated!');
-        // });
     }
     if (args[0] == "/delclass") {
-
-        console.log(resp.classes.length);
-        var removeIndex = resp.classes.map(function (item) { return item.read; }).indexOf(true);
-        console.log(removeIndex);
-        resp.classes.splice(removeIndex, 1);
-
-
-
-        cron.schedule("* * * * * ", async () => {
-            var removeIndex = resp.classes.map(function (item) { return item.read; }).indexOf(true);
+            var removeIndex = resp.classes.map(function (item) { return item.read; }).indexOf(false);
             console.log(removeIndex);
             if (removeIndex != -1) {
-                await resp.classes.splice(removeIndex, 1);
+                 resp.classes.splice(removeIndex, 1);
             }
 
             console.log(resp);
             fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
                 if (err) throw err;
-                console.log('Updated!');
+                console.log('Updated! from delclass');
             });
-        });
+        
 
         console.log(resp.classes.length);
-
-        console.log(resp);
 
     }
 }
