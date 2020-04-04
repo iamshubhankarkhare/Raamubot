@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const fs = require('fs');
 const path = require("path");
 const greet = require("./modules/greet");
+const start= require("./modules/start");
 const covid = require("./modules/covid");
 const myclass = require("./modules/myclass");
 const movie = require("./modules/movie");
@@ -31,6 +32,7 @@ bot.onText(/\/gangsta (.+)/, (msg, match) => {
   });
 
 });
+
 var chatId = "";
 bot.on('message', (msg) => {
   chatId += msg.chat.id;
@@ -39,6 +41,7 @@ bot.on('message', (msg) => {
     covid(bot, msg);
     movie(bot, msg);
     myclass(bot, msg);
+    start(bot ,msg);
   }
 
 
@@ -48,40 +51,28 @@ bot.on('message', (msg) => {
   if (msg.text.toString().toLowerCase().includes("bye")) {
     bot.sendMessage(msg.chat.id, "One man down! Bye");
   }
-
-  //on mess
   if (msg.text.toString().toLowerCase().includes("mess")) {
-
     bot.sendMessage(msg.chat.id, "I hear mess! Sure you wanna go to mess ?", {
       "reply_markup": {
         "keyboard": [["Gate 1", "Gate 3"], ["Shipra"], ["Mc Donalds"], ["Zomato"], ["Mess"]]
       }
     });
   }
-
+  if (msg.text.toString().toLowerCase().includes("bkl")) {
+    bot.sendMessage(msg.chat.id, "Abe tu bkl");
+  }
+  if (msg.text.toString().toLowerCase().includes("mc")) {
+    bot.sendMessage(msg.chat.id, "Abe tu mc");
+  }
   const rep = "I hear mess! Sure you wanna go to mess ?"
   if (msg.text.toString().toLowerCase().includes("bc")) {
     bot.sendPhoto(msg.chat.id, "./static/abeysale.jpeg");
   }
-
-
-
   if (msg.text.toString().toLowerCase().includes("bunk")) {
     bot.sendPoll(msg.chat.id, "I hear mass bunk! Let's see what others have to say.", ["You son of a bitch , I'm in!", "short atttendance"]);
   }
 
 });
-
-
-//myclass functions start here
-
-
-
-
-
-
-
-
 
 //cron job for covid function
 cron.schedule("1 10 * * */1", async () => {
@@ -92,10 +83,21 @@ cron.schedule("1 10 * * */1", async () => {
   await covid(bot, msg);
 });
 //cron job for delclasss function
-cron.schedule("55 */1 * * 0-6 ", async () => {
-  bot.sendMessage(chatId, "/delclass");
+cron.schedule("57 */1 * * 0-6 ", async () => {
   console.log(chatId);
   var msg = { text: '/delclass', chat: { id: chatId } };
+  await myclass(bot, msg);
+});
+//cron job for update function
+cron.schedule("45 */1 * * * ", async () => {
+  console.log(chatId);
+  var msg = { text: '/updateclass', chat: { id: chatId } };
+  await myclass(bot, msg);
+});
+//cron job for reminder function
+cron.schedule("*/15 * * * * ", async () => {
+  console.log(chatId);
+  var msg = { text: '/remclass', chat: { id: chatId } };
   await myclass(bot, msg);
 });
 
