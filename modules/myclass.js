@@ -23,6 +23,7 @@ const myclass = async (bot, msg) => {
             out = "Naah! No classes";
         bot.sendMessage(chatId, out);
     }
+    //addclass
     if (args[0] == "/addclass") {
 
 
@@ -35,7 +36,7 @@ const myclass = async (bot, msg) => {
         fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
             if (err) throw err;
             console.log('Updated! from addclass');
-            bot.sendMessage(chatId, `${args[1]} class added`);
+            bot.sendMessage(chatId, `Roger that! I'll keep a track of ${args[1]} class.`);
         });
     }
     if (args[0] == "/delclass") {
@@ -82,7 +83,7 @@ const myclass = async (bot, msg) => {
                 var cdate = new Date(gh);
                 var time_diff = cdate.getTime() - ndate.getTime();
                 if (time_diff < 900000 && time_diff > 0) {
-                    var rem_msg = `${Math.round((time_diff) / 60000)} min to ${resp.classes[i].sub} class`;
+                    var rem_msg = `You have ${resp.classes[i].sub} class in ${Math.round((time_diff) / 60000)} mins`;
                     console.log(rem_msg);
                     bot.sendMessage(chatId, rem_msg);
                 }

@@ -35,7 +35,7 @@ bot.onText(/\/gangsta (.+)/, (msg, match) => {
 
 var chatId = "";
 bot.on('message', (msg) => {
-  chatId += msg.chat.id;
+  chatId = msg.chat.id;
   greet(bot, msg);
   if (msg.text) {
     covid(bot, msg);
@@ -95,9 +95,11 @@ cron.schedule("45 */1 * * * ", async () => {
   await myclass(bot, msg);
 });
 //cron job for reminder function
-cron.schedule("*/15 * * * * ", async () => {
+cron.schedule("* * * * * ", async () => {
   console.log(chatId);
   var msg = { text: '/remclass', chat: { id: chatId } };
+  console.log("msg= "+msg+"type= "+typeof(msg));
+  console.log(msg.chat.id);
   await myclass(bot, msg);
 });
 
