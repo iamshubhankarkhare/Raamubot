@@ -7,6 +7,7 @@ const start = require("./modules/start");
 const covid = require("./modules/covid");
 const myclass = require("./modules/myclass");
 const movie = require("./modules/movie");
+const facts= require("./modules/facts");
 const G = require('gizoogle');
 const cron = require("node-cron");
 const token = '944880131:AAGtLEWa_IIRU4c6C8F13sSdfcOMY6xn4Io';
@@ -48,6 +49,8 @@ bot.on('message', (msg) => {
     movie(bot, msg);
     myclass(bot, msg);
     start(bot, msg);
+    facts(bot, msg);
+    
   }
 
 
@@ -82,7 +85,7 @@ bot.on('message', (msg) => {
 
 //cron job for covid function
 cron.schedule("1 10 * * */1", async () => {
-  bot.sendMessage(chatId, "Your morning updates on covid ...");
+  bot.sendMessage(chatId, "Todays report on covid ...");
   console.log(chatId);
   var msg = { text: '/covid', chat: { id: chatId } };
   console.log(msg.chat.id);
@@ -96,13 +99,11 @@ cron.schedule("57 */1 * * 0-6 ", async () => {
 });
 //cron job for update function
 cron.schedule("45 */1 * * * ", async () => {
-  console.log(chatId);
   var msg = { text: '/updateclass', chat: { id: chatId } };
   await myclass(bot, msg);
 });
 //cron job for reminder function
-cron.schedule("* * * * * ", async () => {
-  console.log(chatId);
+cron.schedule("*/15 * * * *", async () => {
   var msg = { text: '/remclass', chat: { id: chatId } };
   console.log("msg= " + msg + "type= " + typeof (msg));
   console.log(msg.chat.id);
