@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const fs = require('fs');
 const path = require("path");
 const greet = require("./modules/greet");
-const start= require("./modules/start");
+const start = require("./modules/start");
 const covid = require("./modules/covid");
 const myclass = require("./modules/myclass");
 const movie = require("./modules/movie");
@@ -27,11 +27,17 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
 //gangsta
 bot.onText(/\/gangsta (.+)/, (msg, match) => {
   const res = match[1];
-  G.string(res, function (error, translation) {
-    bot.sendMessage(msg.chat.id, translation);
-  });
-
+  if (res == "") {
+    
+    bot.sendMessage(msg.chat.id, "what is I supposed ta translate ..fo' realz man? Give me a sentence.");
+  } else {
+    G.string(res, function (error, translation) {
+      bot.sendMessage(msg.chat.id, translation);
+    });
+  }
 });
+
+
 
 var chatId = "";
 bot.on('message', (msg) => {
@@ -41,7 +47,7 @@ bot.on('message', (msg) => {
     covid(bot, msg);
     movie(bot, msg);
     myclass(bot, msg);
-    start(bot ,msg);
+    start(bot, msg);
   }
 
 
@@ -76,7 +82,7 @@ bot.on('message', (msg) => {
 
 //cron job for covid function
 cron.schedule("1 10 * * */1", async () => {
-  bot.sendMessage(chatId, "/covid");
+  bot.sendMessage(chatId, "Your morning updates on covid ...");
   console.log(chatId);
   var msg = { text: '/covid', chat: { id: chatId } };
   console.log(msg.chat.id);
@@ -98,17 +104,11 @@ cron.schedule("45 */1 * * * ", async () => {
 cron.schedule("* * * * * ", async () => {
   console.log(chatId);
   var msg = { text: '/remclass', chat: { id: chatId } };
-  console.log("msg= "+msg+"type= "+typeof(msg));
+  console.log("msg= " + msg + "type= " + typeof (msg));
   console.log(msg.chat.id);
   await myclass(bot, msg);
 });
 
-
-
-//cron job for updation of classes when done
-// cron.schedule("* * * * *", async () => {
-//   
-//  });
 
 
 bot.on("polling_error", err => console.log(err));

@@ -25,19 +25,21 @@ const myclass = async (bot, msg) => {
     }
     //addclass
     if (args[0] == "/addclass") {
-
-
-        var date_user = new Date(`${args[2]} ${args[3]}`);
-        var temp = JSON.stringify(date_user);
-
-        var inp = `{"sub":"${args[1]}","date":${temp},"read":false}`;
-        resp["classes"].push(JSON.parse(inp));
-        console.log(resp);
-        fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
-            if (err) throw err;
-            console.log('Updated! from addclass');
-            bot.sendMessage(chatId, `Roger that! I'll keep a track of ${args[1]} class.`);
-        });
+        if (args[1]==undefined || args[2]==undefined || args[3]==undefined  )  {
+            bot.sendMessage(chatId, `Something's wrong ...i can feel it \n This here is the format:\n /addclass mm-dd-yyyy hh:mm`);
+        } else {
+            var date_user = new Date(`${args[2]} ${args[3]}`);
+            var temp = JSON.stringify(date_user);
+    
+            var inp = `{"sub":"${args[1]}","date":${temp},"read":false}`;
+            resp["classes"].push(JSON.parse(inp));
+            console.log(resp);
+            fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
+                if (err) throw err;
+                console.log('Updated! from addclass');
+                bot.sendMessage(chatId, `Roger that! I'll keep a track of ${args[1]} class.`);
+            });
+        }
     }
     if (args[0] == "/delclass") {
         var removeIndex = resp.classes.map(function (item) { return item.read; }).indexOf(true);
