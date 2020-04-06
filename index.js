@@ -10,7 +10,9 @@ const movie = require("./modules/movie");
 const facts= require("./modules/facts");
 const G = require('gizoogle');
 const cron = require("node-cron");
-const token = '944880131:AAGtLEWa_IIRU4c6C8F13sSdfcOMY6xn4Io';
+require('dotenv').config();
+//const token = '944880131:AAGtLEWa_IIRU4c6C8F13sSdfcOMY6xn4Io';
+const token= process.env.TELEGRAM_API_TOKEN;
 const bot = new TelegramBot(token, { polling: true });
 
 const read = fs.readFileSync(path.resolve("myclass.json"));
