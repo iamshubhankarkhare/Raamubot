@@ -50,7 +50,7 @@ bot.on('message', (msg) => {
     myclass(bot, msg);
     start(bot, msg);
     facts(bot, msg);
-    
+
   }
 
 
@@ -67,17 +67,17 @@ bot.on('message', (msg) => {
       }
     });
   }
-  if (msg.text.toString().toLowerCase().includes("bkl")) {
+  if (msg.text.toString().toLowerCase().includes(" bkl ")) {
     bot.sendMessage(msg.chat.id, "Abe tu bkl");
   }
-  if (msg.text.toString().toLowerCase().includes("mc")) {
+  if (msg.text.toString().toLowerCase().includes(" mc ")) {
     bot.sendMessage(msg.chat.id, "Abe tu mc");
   }
   const rep = "I hear mess! Sure you wanna go to mess ?"
-  if (msg.text.toString().toLowerCase().includes("bc")) {
+  if (msg.text.toString().toLowerCase().includes(" bc ")) {
     bot.sendPhoto(msg.chat.id, "./static/abeysale.jpeg");
   }
-  if (msg.text.toString().toLowerCase().includes("bunk")) {
+  if (msg.text.toString().toLowerCase().includes(" bunk ")) {
     bot.sendPoll(msg.chat.id, "I hear mass bunk! Let's see what others have to say.", ["You son of a bitch , I'm in!", "short atttendance"]);
   }
 
@@ -92,13 +92,13 @@ cron.schedule("1 10 * * */1", async () => {
   await covid(bot, msg);
 });
 //cron job for delclasss function
-cron.schedule("57 */1 * * 0-6 ", async () => {
+cron.schedule("*/30 * * * 0-6 ", async () => {
   console.log(chatId);
   var msg = { text: '/delclass', chat: { id: chatId } };
   await myclass(bot, msg);
 });
 //cron job for update function
-cron.schedule("45 */1 * * * ", async () => {
+cron.schedule("*/14 * * * * ", async () => {
   var msg = { text: '/updateclass', chat: { id: chatId } };
   await myclass(bot, msg);
 });
