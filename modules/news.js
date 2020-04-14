@@ -6,10 +6,10 @@ const news = async (bot, msg) => {
     if (args[0] == "/news") {
         if (args[1]) {
             
-            let res = await axios.get(`https://newsapi.org/v2/everything?q=${args[i]}&apiKey=${process.env.NEWS_API_KEY}`);
+            const res = await axios.get(`https://newsapi.org/v2/everything?q=${args[i]}&apiKey=${process.env.NEWS_API_KEY}`);
         }
         else{
-            let res = await axios.get(`https://newsapi.org/v2/everything?q=corona&apiKey=${process.env.NEWS_API_KEY}`);
+            const res = await axios.get(`https://newsapi.org/v2/everything?q=corona&apiKey=${process.env.NEWS_API_KEY}`);
 
         }
         var i = Math.floor(Math.random() * 100);
