@@ -9,6 +9,7 @@ const start = async (bot, msg) => {
   /addclass <subject> <mm-dd-yyyy hh:mm> : I'll keep a track of this class \n
   /showclass : I'm keeping a track of all these classes\n
   /facts : I'll hit you with a useless fact\n
+  /news <topic> : Know what's up with the world\n
   I got more features, let'em be a surprise though XD`;
         
         bot.sendMessage(msg.chat.id, start);
