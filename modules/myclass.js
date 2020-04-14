@@ -33,25 +33,24 @@ const myclass = async (bot, msg) => {
     
             var inp = `{"sub":"${args[1]}","date":${temp},"read":false}`;
             resp["classes"].push(JSON.parse(inp));
-            console.log(resp);
+           
             fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
                 if (err) throw err;
-                console.log('Updated! from addclass');
                 bot.sendMessage(chatId, `Roger that! I'll keep a track of ${args[1]} class.`);
             });
         }
     }
     if (args[0] == "/delclass") {
         var removeIndex = resp.classes.map(function (item) { return item.read; }).indexOf(true);
-        console.log(removeIndex);
+       
         if (removeIndex != -1) {
             resp.classes.splice(removeIndex, 1);
         }
 
-        console.log(resp);
+       
         fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
             if (err) throw err;
-            console.log('Updated! from delclass');
+         
         });
     }
 
@@ -60,20 +59,20 @@ const myclass = async (bot, msg) => {
         for (let i = 0; i < resp.classes.length; i++) {
             if (resp.classes[i].read === false) {
                 var ndate = new Date();
-                console.log("ndate= " + ndate + " " + typeof (ndate));
+              
                 var gh = JSON.parse(JSON.stringify(resp.classes[i].date));
                 var cdate = new Date(gh);
                 if ((ndate.getTime() - cdate.getTime()) > 0) {
                     resp.classes[i].read = true;
                 }
                 else {
-                    console.log("not yet\n\n");
+                   
                 }
             }
         }
         fs.writeFile("myclass.json", JSON.stringify(resp), function (err) {
             if (err) throw err;
-            console.log('Updated! from update class');
+          
         });
     }
     //for reminder
@@ -86,11 +85,8 @@ const myclass = async (bot, msg) => {
                 var time_diff = cdate.getTime() - ndate.getTime();
                 if (time_diff < 900000 && time_diff > 0) {
                     var rem_msg = `You have ${resp.classes[i].sub} class in ${Math.round((time_diff) / 60000)} mins`;
-                    console.log(rem_msg);
+                   
                     bot.sendMessage(chatId, rem_msg);
-                }
-                else {
-                    console.log("no\n\n");
                 }
             }
         }

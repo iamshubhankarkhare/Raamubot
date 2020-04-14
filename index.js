@@ -5,14 +5,14 @@ const path = require("path");
 const greet = require("./modules/greet");
 const start = require("./modules/start");
 const covid = require("./modules/covid");
+const news = require("./modules/news")
 const myclass = require("./modules/myclass");
 const movie = require("./modules/movie");
-const facts= require("./modules/facts");
+const facts = require("./modules/facts");
 const G = require('gizoogle');
 const cron = require("node-cron");
 require('dotenv').config();
-//const token = '944880131:AAGtLEWa_IIRU4c6C8F13sSdfcOMY6xn4Io';
-const token= process.env.TELEGRAM_API_TOKEN;
+const token = process.env.TELEGRAM_API_TOKEN;
 const bot = new TelegramBot(token, { polling: true });
 
 const read = fs.readFileSync(path.resolve("myclass.json"));
@@ -31,7 +31,7 @@ bot.onText(/\/echo (.+)/, (msg, match) => {
 bot.onText(/\/gangsta (.+)/, (msg, match) => {
   const res = match[1];
   if (res == "") {
-    
+
     bot.sendMessage(msg.chat.id, "what is I supposed ta translate ..fo' realz man? Give me a sentence.");
   } else {
     G.string(res, function (error, translation) {
@@ -52,6 +52,7 @@ bot.on('message', (msg) => {
     myclass(bot, msg);
     start(bot, msg);
     facts(bot, msg);
+    news(bot, msg);
 
   }
 
@@ -88,14 +89,11 @@ bot.on('message', (msg) => {
 //cron job for covid function
 cron.schedule("1 10 * * */1", async () => {
   bot.sendMessage(chatId, "Todays report on covid ...");
-  console.log(chatId);
   var msg = { text: '/covid', chat: { id: chatId } };
-  console.log(msg.chat.id);
   await covid(bot, msg);
 });
 //cron job for delclasss function
 cron.schedule("*/30 * * * 0-6 ", async () => {
-  console.log(chatId);
   var msg = { text: '/delclass', chat: { id: chatId } };
   await myclass(bot, msg);
 });
@@ -107,8 +105,6 @@ cron.schedule("*/14 * * * * ", async () => {
 //cron job for reminder function
 cron.schedule("*/15 * * * *", async () => {
   var msg = { text: '/remclass', chat: { id: chatId } };
-  console.log("msg= " + msg + "type= " + typeof (msg));
-  console.log(msg.chat.id);
   await myclass(bot, msg);
 });
 
