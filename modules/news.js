@@ -11,6 +11,10 @@ const news = async (bot, msg) => {
             bot.sendMessage(msg.chat.id, out);
 
         }
+        if(args[1]==undefined){
+            bot.sendMessage(msg.chat.id, "U mad bruh?..news about what ?");
+
+        }
     }
 }
 module.exports = news;
