@@ -7,7 +7,7 @@ const news = async (bot, msg) => {
         if (args[1]) {
             
         let res = await axios.get(`https://newsapi.org/v2/everything?q=${args[1]}&apiKey=${process.env.NEWS_API_KEY}`);
-        var out=`news: ${res.data.articles.title}`;
+        var out=`news: ${res.data.articles[0].title}`;
         bot.sendMessage(msg.chat.id, "news running" );
         bot.sendMessage(msg.chat.id, out );
         }
