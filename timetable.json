@@ -1,0 +1,146 @@
+{
+  "data": [
+    {
+      "day":"monday",
+      "classes": [
+        {
+          "sub": "COA tut",
+          "time": "09:00",
+          "meet": "meetlink"
+        },
+        {
+          "sub": "ICT lecture",
+          "time": "13:00",
+          "meet": "meetlink2"
+        },
+        {
+          "sub": "ICT tut",
+          "time": "14:00",
+          "meet": "meetlink3"
+        }
+      ]
+    },
+    {
+      "day":"tuesday",
+      "classes": [
+        {
+          "sub": "COA tut",
+          "time": "09:00",
+          "meet": "meetlink"
+        },
+        {
+          "sub": "ICT lecture",
+          "time": "11:00",
+          "meet": "meetlink2"
+        },
+        {
+          "sub": "ICT tut",
+          "time": "14:00",
+          "meet": "meetlink3"
+        }
+      ]
+    },
+{
+      "day":"wednesday",
+      "classes": [
+        {
+          "sub": "COA tut",
+          "time": "09:00",
+          "meet": "meetlink"
+        },
+        {
+          "sub": "ICT lecture",
+          "time": "11:00",
+          "meet": "meetlink2"
+        },
+        {
+          "sub": "ICT tut",
+          "time": "14:00",
+          "meet": "meetlink3"
+        }
+      ]
+    },
+{
+      "day":"thursday",
+      "classes": [
+        {
+          "sub": "COA tut",
+          "time": "09:00",
+          "meet": "meetlink"
+        },
+        {
+          "sub": "ICT lecture",
+          "time": "11:00",
+          "meet": "meetlink2"
+        },
+        {
+          "sub": "ICT tut",
+          "time": "14:00",
+          "meet": "meetlink3"
+        }
+      ]
+    },
+{
+      "day":"friday",
+      "classes": [
+        {
+          "sub": "COA tut",
+          "time": "09:00",
+          "meet": "meetlink"
+        },
+        {
+          "sub": "ICT lecture",
+          "time": "11:00",
+          "meet": "meetlink2"
+        },
+        {
+          "sub": "ICT tut",
+          "time": "14:00",
+          "meet": "meetlink3"
+        }
+      ]
+    },
+{
+      "day":"saturday",
+      "classes": [
+        {
+          "sub": "COA tut",
+          "time": "09:00",
+          "meet": "meetlink"
+        },
+        {
+          "sub": "ICT lecture",
+          "time": "11:00",
+          "meet": "meetlink2"
+        },
+        {
+          "sub": "ICT tut",
+          "time": "14:00",
+          "meet": "meetlink3"
+        }
+      ]
+    },
+{
+      "day":"sunday",
+      "classes": [
+        {
+          "sub": "COA tut",
+          "time": "09:00",
+          "meet": "meetlink"
+        },
+        {
+          "sub": "ICT lecture",
+          "time": "11:00",
+          "meet": "meetlink2"
+        },
+        {
+          "sub": "ICT tut",
+          "time": "14:00",
+          "meet": "meetlink3"
+        }
+      ]
+    }
+
+
+  ]
+}
