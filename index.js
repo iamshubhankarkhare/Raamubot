@@ -114,7 +114,7 @@ cron.schedule('*/15 * * * *', async () => {
 });
 
 //cron job for timetable reminders
-cron.schedule('*/55 * * * *', async () => {
+cron.schedule('*/55 * * * 0-6', async () => {
   var msg = { text: '/remindtimetable', chat: { id: chatId } };
   await timetable(bot, msg);
 });

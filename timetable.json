@@ -1,146 +1,175 @@
 {
   "data": [
     {
-      "day":"monday",
+      "day": "monday",
       "classes": [
         {
           "sub": "COA tut",
           "time": "09:00",
-          "meet": "meetlink"
+          "meet": "Not available yet"
         },
         {
           "sub": "ICT lecture",
-          "time": "13:00",
-          "meet": "meetlink2"
+          "time": "11:00",
+          "meet": "Not available yet"
         },
         {
           "sub": "ICT tut",
           "time": "14:00",
-          "meet": "meetlink3"
+          "meet": "Not available yet"
+        },
+        {
+          "sub": "LASER lecture" ,
+          "time": "15:00",
+          "meet": "Not available yet"
+        },
+        {
+          "sub": "Big Data lecture",
+          "time": "16:00",
+          "meet": "Not available yet"
         }
       ]
     },
     {
-      "day":"tuesday",
+      "day": "tuesday",
       "classes": [
         {
-          "sub": "COA tut",
+          "sub": "Technology and culture lecture",
           "time": "09:00",
-          "meet": "meetlink"
+          "meet": "Not available yet"
         },
         {
-          "sub": "ICT lecture",
+          "sub": "COA lecture",
+          "time": "10:00",
+          "meet": "Not available yet"
+        },
+        {
+          "sub": "Big Data tut",
           "time": "11:00",
-          "meet": "meetlink2"
+          "meet": "Not available yet"
         },
         {
-          "sub": "ICT tut",
-          "time": "14:00",
-          "meet": "meetlink3"
+          "sub": "Operating System lecture",
+          "time": "15:00",
+          "meet": "Not available yet"
+        },
+        {
+          "sub": "Laser lecture",
+          "time": "16:00",
+          "meet": "Not available yet"
         }
       ]
     },
-{
-      "day":"wednesday",
+    {
+      "day": "wednesday",
       "classes": [
         {
-          "sub": "COA tut",
-          "time": "09:00",
-          "meet": "meetlink"
+          "sub": "Operating System tut",
+          "time": "10:00",
+          "meet": "Not available yet"
         },
         {
-          "sub": "ICT lecture",
+          "sub": "Operating System lecture",
           "time": "11:00",
-          "meet": "meetlink2"
+          "meet": "Not available yet"
         },
         {
-          "sub": "ICT tut",
-          "time": "14:00",
-          "meet": "meetlink3"
+          "sub": "Big Data lecture",
+          "time": "15:00",
+          "meet": "Not available yet"
         }
       ]
     },
-{
-      "day":"thursday",
+    {
+      "day": "thursday",
       "classes": [
         {
-          "sub": "COA tut",
-          "time": "09:00",
-          "meet": "meetlink"
+          "sub": "Laser tut",
+          "time": "10:00",
+          "meet": "Not available yet"
         },
         {
-          "sub": "ICT lecture",
-          "time": "11:00",
-          "meet": "meetlink2"
-        },
-        {
-          "sub": "ICT tut",
+          "sub": "Technology and culture lecture",
           "time": "14:00",
-          "meet": "meetlink3"
+          "meet": "Not available yet"
+        },
+        {
+          "sub": "Big Data lecture",
+          "time": "15:00",
+          "meet": "Not available yet"
         }
       ]
     },
-{
-      "day":"friday",
+    {
+      "day": "friday",
       "classes": [
         {
-          "sub": "COA tut",
+          "sub": "COA lecture",
           "time": "09:00",
-          "meet": "meetlink"
+          "meet": "Not available yet"
+        },
+        {
+          "sub": "LASER lecture",
+          "time": "11:00",
+          "meet": "Not available yet"
         },
         {
           "sub": "ICT lecture",
-          "time": "11:00",
-          "meet": "meetlink2"
-        },
-        {
-          "sub": "ICT tut",
           "time": "14:00",
-          "meet": "meetlink3"
+          "meet": "Not available yet"
         }
       ]
     },
-{
-      "day":"saturday",
+    {
+      "day": "saturday",
       "classes": [
         {
-          "sub": "COA tut",
+          "sub": "Technology and culture tut",
           "time": "09:00",
-          "meet": "meetlink"
+          "meet": "Not available yet"
         },
         {
           "sub": "ICT lecture",
           "time": "11:00",
-          "meet": "meetlink2"
+          "meet": "Not available yet"
         },
         {
-          "sub": "ICT tut",
+          "sub": "Operarting System lecture",
           "time": "14:00",
-          "meet": "meetlink3"
+          "meet": "Not available yet"
+        },
+{
+          "sub": "COA lecture",
+          "time": "15:00",
+          "meet": "Not available yet"
+        },
+{
+          "sub": "Technology and culture lecture",
+          "time": "16:00",
+          "meet": "Not available yet"
         }
+
       ]
     },
-{
-      "day":"sunday",
+    {
+      "day": "sunday",
       "classes": [
         {
           "sub": "COA tut",
           "time": "09:00",
-          "meet": "meetlink"
+          "meet": "Not available yet"
         },
         {
           "sub": "ICT lecture",
           "time": "11:00",
-          "meet": "meetlink2"
+          "meet": "Not available yet"
         },
         {
           "sub": "ICT tut",
           "time": "14:00",
-          "meet": "meetlink3"
+          "meet": "Not available yet"
         }
       ]
     }
-
-
   ]
 }
