@@ -7,14 +7,10 @@ const timetable = async (bot, msg) => {
   const curMins = date.getMinutes().toString();
   const curTime = curHrs + ':' + curMins;
   if (args[0] == '/timetable') {
-    console.log(jsonData.data[date.getDay() - 1]);
-    console.log('\n\n');
     var out = 'This is what we have today fellas..\n\n';
-
     jsonData.data[date.getDay() - 1].classes.map((el) => {
       out = out + `${el.sub} at ${el.time} \n on ${el.meet}\n\n`;
     });
-    console.log(out);
     bot.sendMessage(msg.chat.id, out);
   }
   if (args[0] == '/remindtimetable') {
@@ -22,9 +18,9 @@ const timetable = async (bot, msg) => {
       'Bullshit alert!!',
       "I'm telling ya ..Drop the fuck out!!!",
       'Start a startup or Something man',
+      'Go attend a class.. shoo',
       'One more!!!',
       'These mfs ...',
-      'Go attend a class.. shoo',
       'Mark my proxy bruh..',
       "Shit's real",
       'U got Something better to do??',
@@ -36,8 +32,8 @@ const timetable = async (bot, msg) => {
     jsonData.data[date.getDay() - 1].classes.map((el) => {
       var timeAr = el.time.split(':');
       if (timeAr[0] - curHrs == 1) {
-        out = out + `${el.sub} in ${60 - curMins} mins \n meet : ${el.meet}`;
-        console.log(out);
+        out = out + `${el.sub} in ${60 - curMins} mins \n\nmeet : ${el.meet}`;
+        bot.sendMessage(msg.chat.id, out);
       }
     });
   }
