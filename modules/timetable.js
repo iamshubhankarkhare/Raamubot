@@ -8,7 +8,7 @@ const timetable = async (bot, msg) => {
   const curTime = curHrs + ':' + curMins;
   if (args[0] == '/timetable') {
     var out = 'This is what we have today fellas..\n\n';
-    jsonData.data[date.getDay() - 1].classes.map((el) => {
+    jsonData.data[date.getDay() - 1].classes.map(el => {
       out = out + `${el.sub} at ${el.time} \n on ${el.meet}\n\n`;
     });
     bot.sendMessage(msg.chat.id, out);
@@ -27,16 +27,20 @@ const timetable = async (bot, msg) => {
       'Just drop out already!!!',
       'I know it sucks...',
     ];
+    var flag = false;
     var number = Math.floor(Math.random() * 10);
     var out = `${intro[number]}\n\n`;
-    jsonData.data[date.getDay() - 1].classes.map((el) => {
+    jsonData.data[date.getDay() - 1].classes.map(el => {
       var timeAr = el.time.split(':');
       if (timeAr[0] - curHrs == 1) {
         out =
           out + `${el.sub} in ${60 - curMins} mins \n\nmeet : ${el.meet}\n\n`;
+        flag = true;
       }
     });
-    bot.sendMessage(msg.chat.id, out);
+    if (flag) {
+      bot.sendMessage(msg.chat.id, out);
+    }
   }
 };
 
