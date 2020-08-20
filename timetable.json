@@ -9,6 +9,12 @@
           "meet": "Not available yet"
         },
         {
+          "sub": "FML tut",
+          "time": "10:00",
+          "meet": "Not available yet"
+        },
+
+        {
           "sub": "ICT lecture",
           "time": "11:00",
           "meet": "Not available yet"
@@ -19,10 +25,21 @@
           "meet": "Not available yet"
         },
         {
-          "sub": "LASER lecture" ,
+          "sub": "LASER lecture",
           "time": "15:00",
           "meet": "Not available yet"
         },
+        {
+          "sub": "Basic Numerical Methods lecture",
+          "time": "15:00",
+          "meet": "Not available yet"
+        },
+        {
+          "sub": "FML",
+          "time": "16:00",
+          "meet": "Not available yet"
+        },
+
         {
           "sub": "Big Data lecture",
           "time": "16:00",
@@ -33,6 +50,12 @@
     {
       "day": "tuesday",
       "classes": [
+        {
+          "sub": "Socio lecture",
+          "time": "09:00",
+          "meet": "Not available yet"
+        },
+
         {
           "sub": "Technology and culture lecture",
           "time": "09:00",
@@ -57,6 +80,11 @@
           "sub": "Laser lecture",
           "time": "16:00",
           "meet": "Not available yet"
+        },
+        {
+          "sub": "Basic Numerical Methods",
+          "time": "16:00",
+          "meet": "Not available yet"
         }
       ]
     },
@@ -77,12 +105,23 @@
           "sub": "Big Data lecture",
           "time": "15:00",
           "meet": "Not available yet"
+        },
+        {
+          "sub": "FML lecture",
+          "time": "15:00",
+          "meet": "Not available yet"
         }
       ]
     },
     {
       "day": "thursday",
       "classes": [
+        {
+          "sub": "Basic Numerical Method tut",
+          "time": "09:00",
+          "meet": "Not available yet"
+        },
+
         {
           "sub": "Laser tut",
           "time": "10:00",
@@ -94,8 +133,24 @@
           "meet": "Not available yet"
         },
         {
+          "sub": "Socio lecture",
+          "time": "14:00",
+          "meet": "Not available yet"
+        },
+        {
+          "sub": "FML lecture",
+          "time": "15:00",
+          "meet": "Not available yet"
+        },
+
+        {
           "sub": "Big Data lecture",
           "time": "15:00",
+          "meet": "Not available yet"
+        },
+        {
+          "sub": "Socio tut",
+          "time": "16:00",
           "meet": "Not available yet"
         }
       ]
@@ -105,7 +160,7 @@
       "classes": [
         {
           "sub": "COA lecture",
-          "time": "09:00",
+          "time": "10:00",
           "meet": "Not available yet"
         },
         {
@@ -113,6 +168,12 @@
           "time": "11:00",
           "meet": "Not available yet"
         },
+{
+          "sub": "Basic numerical methods lecture",
+          "time": "11:00",
+          "meet": "Not available yet"
+        },
+
         {
           "sub": "ICT lecture",
           "time": "14:00",
@@ -138,13 +199,18 @@
           "time": "14:00",
           "meet": "Not available yet"
         },
-{
+        {
           "sub": "COA lecture",
           "time": "15:00",
           "meet": "Not available yet"
         },
-{
+        {
           "sub": "Technology and culture lecture",
+          "time": "16:00",
+          "meet": "Not available yet"
+        },
+{
+          "sub": "Socio lecture",
           "time": "16:00",
           "meet": "Not available yet"
         }

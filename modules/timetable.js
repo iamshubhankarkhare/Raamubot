@@ -32,10 +32,11 @@ const timetable = async (bot, msg) => {
     jsonData.data[date.getDay() - 1].classes.map((el) => {
       var timeAr = el.time.split(':');
       if (timeAr[0] - curHrs == 1) {
-        out = out + `${el.sub} in ${60 - curMins} mins \n\nmeet : ${el.meet}`;
-        bot.sendMessage(msg.chat.id, out);
+        out =
+          out + `${el.sub} in ${60 - curMins} mins \n\nmeet : ${el.meet}\n\n`;
       }
     });
+    bot.sendMessage(msg.chat.id, out);
   }
 };
 
